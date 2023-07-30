@@ -1,189 +1,58 @@
 import React from "react";
-import img1 from "../../Assets/img1.png";
-import { AiOutlineHeart } from "react-icons/ai";
+import ImgCard from "./ImgCard";
+
+const imgArr = [
+	{
+		img_id: 1,
+		anime: "Naruto",
+		description: "Almighty Push Wall Poster",
+		price: 350,
+	},
+	{
+		img_id: 2,
+		description: "Roronoa Zoro Wall Poster",
+		anime: "One Piece",
+		price: 400,
+	},
+	{
+		img_id: 3,
+		anime: "Chainsaw Man",
+		description: "Chainsaw Skull Wall Poster",
+		price: 200,
+	},
+	{
+		img_id: 4,
+		anime: "Baki",
+		description: "Yujiro Hanma Wall Poster",
+		price: 150,
+	},
+	{
+		img_id: 5,
+		anime: "One Piece",
+		description: "WhiteBeard Wall Poster",
+		price: 500,
+	},
+	{
+		img_id: 6,
+		anime: "One Piece",
+		description: "Luffy 5th Gear  Wall Poster",
+		price: 249,
+	},
+];
 const Main = () => {
 	return (
-    <div className="   grid  gap-7 justify-items-center    mt-4  border md:grid-cols-3 px-10 max-w-[1300px] mx-auto">
-      
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
+		<div className="   grid  gap-7 justify-items-center    pt-10   md:grid-cols-3 px-2 max-w-[1300px] mx-auto">
+			{imgArr.map((item) => {
+				return (
+					<ImgCard
+						key={item.img_id}
+						img_id={item.img_id}
+						anime={item.anime}
+						description={item.description}
+						price={item.price}
 					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
-					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
-					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
-					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
-					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-			<div className="flex flex-col justify-between border border-gray-300 max-w-[300px] max-h-[500px] shadow-lg ">
-				<div className="flex justify-between   pb-3 ">
-					<div className="bg-red-700 text-white px-2">
-						SALE
-					</div>
-					<div className="text-2xl text-blue-700">
-						<AiOutlineHeart />
-					</div>
-				</div>
-
-				<div className="h-52 px-4 hover:scale-105 duration-300">
-					<img
-						src={img1}
-						alt=""
-						className="w-full h-full object-cover  "
-					/>
-				</div>
-
-				<div className="px-4 py-1">
-					{/* <p className="text-gray-500">Epic Stuff</p> */}
-					<button className="border bg-red-700 text-white p-1 rounded-md">Add to Cart</button>
-					<p className="font-medium">
-						One Piece - Luffy 5th Gear Design Wall Poster
-					</p>
-					<p className="text-gray-500">On sale from 249</p>
-				</div>
-			</div>
-{/* ***************************************************************************************************************************************** */}
-
-
-
-
-
-
-			
-			
-			
-
+				);
+			})}
 		</div>
 	);
 };

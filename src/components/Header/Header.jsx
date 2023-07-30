@@ -26,9 +26,9 @@ const Header = (props) => {
 				</div>
 			</div>
 
-			<div className=" bg-blue-800 w-full mt-[60px] h-[150px]  md:h-[350px]">
+			<div className="  w-full mt-[58px] h-[150px]  md:h-[350px]">
 				<img
-					className=" w-full h-full object-cover"
+					className=" w-full h-full object-cover "
 					src={hero}
 					alt="hero"
 				/>
