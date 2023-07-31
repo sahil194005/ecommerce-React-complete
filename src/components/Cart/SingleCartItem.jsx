@@ -48,15 +48,17 @@ const SingleCartItem = ({
 						{price + 273}
 					</span>
 					<span>{price}</span>
-				{quantity>1&&	<p className="flex justify-center items-center ">
-						<div>{price}</div>
-						<div>
-							<AiOutlineClose />
+					{quantity > 1 && (
+						<div className="flex justify-center items-center ">
+							<div>{price}</div>
+							<div>
+								<AiOutlineClose />
+							</div>
+							<div>{quantity}</div>
+							<div>=</div>
+							<div>{price * quantity}</div>
 						</div>
-						<div>{quantity}</div>
-						<div>=</div>
-						<div>{price * quantity}</div>
-					</p>}
+					)}
 					<p className="text-xs text-green-800 sm:text-lg">
 						4 offers applied. {img_id + 7} offers available
 					</p>
