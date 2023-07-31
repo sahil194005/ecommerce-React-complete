@@ -45,7 +45,7 @@ const Header = ({ isCart, setIsCart }) => {
 					alt="hero"
 				/>
 			</div>
-			<div className="">
+			<div className="sm:hidden">
 				<img className="ml-[70px]" src={Hero} alt="hero" />
 			</div>
 		</React.Fragment>
