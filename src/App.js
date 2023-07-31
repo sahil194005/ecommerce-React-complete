@@ -10,7 +10,7 @@ function App() {
 	const [isCart, setIsCart] = useState(false);
 	return (
 		<div className="App">
-			{isCart && <ModalPopup isCart setIsCart />}
+			{isCart && <ModalPopup isCart={isCart} setIsCart={setIsCart} />}
 			<Header isCart={isCart} setIsCart={setIsCart} />
 			<Navbar />
 			<Main />
