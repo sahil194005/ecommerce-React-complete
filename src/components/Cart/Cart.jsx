@@ -23,41 +23,6 @@ const cartItems = [
 		price: 200,
 		quantity: 1,
 	},
-	{
-		img_id: 3,
-		anime: "Chainsaw Man",
-		description: "Chainsaw Skull Wall Poster",
-		price: 200,
-		quantity: 1,
-	},
-	{
-		img_id: 3,
-		anime: "Chainsaw Man",
-		description: "Chainsaw Skull Wall Poster",
-		price: 200,
-		quantity: 1,
-	},
-	{
-		img_id: 3,
-		anime: "Chainsaw Man",
-		description: "Chainsaw Skull Wall Poster",
-		price: 200,
-		quantity: 1,
-	},
-	{
-		img_id: 3,
-		anime: "Chainsaw Man",
-		description: "Chainsaw Skull Wall Poster",
-		price: 200,
-		quantity: 1,
-	},
-	{
-		img_id: 3,
-		anime: "Chainsaw Man",
-		description: "Chainsaw Skull Wall Poster",
-		price: 200,
-		quantity: 1,
-	},
 ];
 const Cart = (props) => {
 	let Items = cartItems.map((item) => {
@@ -72,14 +37,16 @@ const Cart = (props) => {
 		);
 	});
 	return (
-		<div className="">
+		<div>
 			{Items}
 			<div className="flex bg-white justify-between mt-5 border border-black p-2  ">
 				<div className="text-center ">
 					<button className="text-xl">1,877</button>
 					<p>view price details</p>
 				</div>
-				<div onClick={()=>props.setIsCart(false)} className="bg-yellow-400 rounded-md px-1 justify-center items-center flex">
+				<div
+					onClick={() => props.setIsCart(false)}
+					className="bg-yellow-400 rounded-md px-1 justify-center items-center flex">
 					<button>Close Cart</button>
 				</div>
 				<div className="bg-yellow-400 rounded-md px-1 justify-center items-center flex">
