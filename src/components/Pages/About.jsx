@@ -1,6 +1,6 @@
 import React from "react";
 import hero from "../../Assets/heroImage.webp";
-import Hero from "../../Assets/Animations/Hero.gif";
+import Sanji from "../../Assets/Animations/Sanji.gif";
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -20,15 +20,37 @@ const About = () => {
 				</div>
 			</div>
 
-			<div className="hidden sm:block w-full mt-[58px] h-[150px]  md:h-[350px] border ">
-				<img
-					className=" w-full h-full object-cover "
-					src={hero}
-					alt="hero"
-				/>
-			</div>
-			<div className="sm:hidden">
-				<img className="ml-[70px]" src={Hero} alt="hero" />
+			<div className="hidden sm:block w-full mt-[60px] h-[150px]  md:h-[350px] border ">
+        <h1>About Us</h1>
+        <p>
+
+        </p>
+      </div>
+      
+			<div
+				style={{
+					backgroundImage: `url(${Sanji})`,
+					backgroundRepeat: `no-repeat`,
+					backgroundPosition: "center",
+					backgroundAttachment: "fixed",
+				}}
+				className=" h-screen sm:hidden bg-[rgb(45,64,81)] border border-white ">
+				<div className="  h-full w-full flex flex-col justify-evenly items-center p-3">
+					<h1 className="text-white font-bold font-serif text-4xl mt-2">
+						About Us
+					</h1>
+					<p className="text-white text-3xl px-9 text-center p-4 font-thin  ">
+						Welcome to Store , where anime dreams come to
+						life! Immerse yourself in a captivating world of
+						anime wonder with our exquisite collection of
+						posters. Each piece is a masterpiece, capturing
+						the essence of legendary series like "Naruto,"
+						"One Piece," and "Baki." Experience the
+						adrenaline-fueled battles, epic journeys, and
+						intense martial arts with our thoughtfully
+						curated posters.
+					</p>
+				</div>
 			</div>
 		</React.Fragment>
 	);
