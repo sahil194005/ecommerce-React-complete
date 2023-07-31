@@ -3,6 +3,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import hero from "../../Assets/heroImage.webp";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
+import Hero from "../../Assets/Animations/Hero.gif";
 const Header = ({ isCart, setIsCart }) => {
 	const { state } = useContext(CartContext);
 
@@ -37,12 +38,15 @@ const Header = ({ isCart, setIsCart }) => {
 				</div>
 			</div>
 
-			<div className="  w-full mt-[58px] h-[150px]  md:h-[350px]">
+			<div className="hidden sm:block w-full mt-[58px] h-[150px]  md:h-[350px] border ">
 				<img
 					className=" w-full h-full object-cover "
 					src={hero}
 					alt="hero"
 				/>
+			</div>
+			<div className="">
+				<img className="ml-[70px]" src={Hero} alt="hero" />
 			</div>
 		</React.Fragment>
 	);
