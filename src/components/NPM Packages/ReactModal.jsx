@@ -21,7 +21,7 @@ const ModalPopup = ({ isCart, setIsCart }) => {
 			  animationDuration={800}
 			center>
 			<div className=" text-4xl "></div>
-			<Cart/>
+			<Cart isCart={ isCart} setIsCart={setIsCart} />
 		</Modal>
 	);
 };
