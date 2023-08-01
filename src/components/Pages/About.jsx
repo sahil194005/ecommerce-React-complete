@@ -8,7 +8,7 @@ const About = () => {
 		<div className="">
 			<div className="z-20 bg-black text-white flex  py-4 fixed top-0 w-full justify-evenly  ">
 				<div className=" md:px-6  mx-6 md:text-3xl">
-					<Link to="/Home">HOME</Link>
+					<Link to="/ContactUs">CONTACT US</Link>
 				</div>
 				<div className="md:px-6 mx-6 md:text-3xl ">
 					<Link to="/">STORE</Link>
@@ -37,7 +37,7 @@ const About = () => {
 					</div>
 					<div className="col-span-2">
 						<div className="text-xl h-full w-full max-w-[60%] min-h-[80%] mx-auto my-auto flex justify-center items-center">
-							Welcome to Store , where anime dreams come to
+							Welcome to our Store , where anime dreams come to
 							life! Immerse yourself in a captivating world
 							of anime wonder with our exquisite collection
 							of posters. Each piece is a masterpiece,
@@ -68,7 +68,7 @@ const About = () => {
 						About Us
 					</h1>
 					<p className="text-white text-3xl px-9 text-center p-4 font-thin  ">
-						Welcome to Store , where anime dreams come to
+						Welcome to our Store , where anime dreams come to
 						life! Immerse yourself in a captivating world of
 						anime wonder with our exquisite collection of
 						posters. Each piece is a masterpiece, capturing
