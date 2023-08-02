@@ -1,31 +1,17 @@
 import React from "react";
 import Sanji from "../../Assets/Animations/Sanji.gif";
 import Sanji2 from '../../Assets/Animations/sanji2.gif'
-import { Link } from "react-router-dom";
-
+import Navigation from "../Navigation/Navigation";
 const About = () => {
 	return (
 		<div className="">
-			<div className="z-20 bg-black text-white flex  py-4 fixed top-0 w-full justify-evenly  ">
-				<div className=" md:px-6  mx-6 md:text-3xl">
-					<Link to="/ContactUs">CONTACT US</Link>
-				</div>
-				<div className="md:px-6 mx-6 md:text-3xl ">
-					<Link to="/">STORE</Link>
-				</div>
-				<div className="md:px-6 mx-6 md:text-3xl animate-bounce">
-					<Link className="border-b-2 pb-1" to="/About">
-						ABOUT
-					</Link>
-				</div>
-			</div>
-
-			<div className="hidden  sm:block   w-screen h-screen  p-6">
+			<Navigation val="about" />
+			<div className="hidden  sm:block  h-screen w-screen  p-6">
 				<div className="  h-2/5 grid grid-cols-2">
 					<div className="  bg-[rgb(248,192,187)]"></div>
-          <div className=" bg-red-500 h-full w-full flex  items-end justify-center">
-          <img className=" max-h-[300px]   object-cover " src={Sanji2} alt="" />
-          </div>
+					<div className=" bg-red-500 h-full w-full flex  items-end justify-center">
+						<img className=" max-h-[300px]   object-cover " src={Sanji2} alt="" />
+					</div>
 				</div>
 				<div className=" h-2/5 w-full  grid grid-cols-4 ">
 					<div className="bg-[rgb(255,190,225)]">
@@ -48,9 +34,9 @@ const About = () => {
 					<div className="bg-[rgb(246,101,84)]"></div>
 				</div>
 				<div className=" h-1/5 grid grid-cols-2">
-          <div className="h-full w-full ">
-           
-          </div>
+					<div className="h-full w-full ">
+
+					</div>
 					<div className="bg-[rgb(119,112,212)]"></div>
 				</div>
 			</div>
@@ -62,7 +48,7 @@ const About = () => {
 					backgroundPosition: "center",
 					backgroundAttachment: "fixed",
 				}}
-				className="  h-screen sm:hidden bg-[rgb(45,64,81)] border border-white ">
+				className="mt-[55px] min-h-[1024px] sm:hidden bg-[rgb(45,64,81)] ">
 				<div className="  h-full w-full flex flex-col justify-end items-center p-3">
 					<h1 className="text-white font-bold font-serif text-4xl mt-2">
 						About Us
