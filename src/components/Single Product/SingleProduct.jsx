@@ -41,15 +41,15 @@ const SingleProduct = () => {
   return (
     <div>
       <Navigation />
-      <div className='mt-[55px] min-h-[1000px] w-full  flex flex-col items-center  md:flex-row md: '>
-        <div className="min-h-[100px] min-w-[0px] ">
+      <div className='mt-[55px]  w-full  flex flex-col items-center lg:flex-row lg:justify-evenly p-6  '>
+        <div className="min-h-[100px] min-w-[0px]  ">
           <img
             src={imgSrc}
             alt=""
             className="w-full h-full object-cover  "
           />
         </div>
-        <div className='flex flex-col p-6  '>
+        <div className='flex flex-col p-6 max-w-[700px] '>
 
           <span className='text-gray-600 p-2'>Epic Stuff</span>
 
@@ -76,7 +76,7 @@ const SingleProduct = () => {
               <p className='p-1 text-gray-700'>QUANTITY</p>
               <div className='flex flex-row bg-gray-200 rounded-sm'>
                 <button onClick={quantDeccHandler} className='border-r-2 border-gray-300  px-1 flex-1'>-</button>
-                <span className='px-1 flex-1'>{quant}</span>
+                <span className='px-1 flex-1 text-center'>{quant}</span>
                 <button className="px-1 flex-1 border-l-2 border-gray-300" onClick={quantIncHandler}>+</button>
               </div>
             </div>
@@ -95,8 +95,8 @@ const SingleProduct = () => {
             </ul>
           </div>
 
-          <div className='p-2 bg-green-800 text-white'>
-            <p className=''>
+          <div className='p-2 bg-green-800 text-white rounded-md'>
+            <p >
               Let's Make 2023 A Little Better | Time To Spread Happiness! | 10% Off On All Orders Except Collectibles - Use Code: BETTER2023
             </p>
           </div>
