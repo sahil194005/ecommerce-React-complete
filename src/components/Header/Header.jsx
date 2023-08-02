@@ -19,7 +19,7 @@ const Header = ({ isCart, setIsCart }) => {
 					<div className=" md:px-6  mx-6 md:text-3xl">
 						<Link to ="/ContactUs">CONTACT US</Link>
 					</div>
-					<div className="md:px-6 mx-6 md:text-3xl animate-bounce">
+					<div className="md:px-6 mx-6 md:text-3xl ">
 						<Link className="border-b-2 pb-1" to="/">STORE</Link>
 					</div>
 					<div className="md:px-6 mx-6 md:text-3xl">
@@ -33,7 +33,7 @@ const Header = ({ isCart, setIsCart }) => {
 						</button>
 					</div>
 					<div
-						className="fixed right-11 cursor-pointer hover:animate-bounce "
+						className="fixed right-11 cursor-pointer animate-bounce "
 						onClick={CartClickHandler}>
 						<span>{state.TotalCartItems}</span>
 					</div>

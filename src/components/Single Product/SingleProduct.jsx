@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
 import Navigation from '../Navigation/Navigation';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import img1 from "../../Assets/img1.png";
 import img2 from "../../Assets/img2.png";
@@ -9,6 +10,7 @@ import img3 from "../../Assets/img3.png";
 import img4 from "../../Assets/img4.png";
 import img5 from "../../Assets/img5.png";
 import img6 from "../../Assets/img6.png";
+import { Link } from 'react-router-dom';
 const imgMap = {
   1: img1,
   2: img2,
@@ -18,29 +20,79 @@ const imgMap = {
   6: img6,
 };
 
+const imgArr = [
+  {
+    img_id: 1,
+    anime: "Naruto",
+    description: "Almighty Push Wall Poster",
+    price: 350,
+
+  },
+  {
+    img_id: 2,
+    description: "Roronoa Zoro Wall Poster",
+    anime: "One Piece",
+    price: 400,
+
+
+  },
+  {
+    img_id: 3,
+    anime: "Chainsaw Man",
+    description: "Chainsaw Skull Wall Poster",
+    price: 200,
+
+
+  },
+  {
+    img_id: 4,
+    anime: "Baki",
+    description: "Yujiro Hanma Wall Poster",
+    price: 150,
+
+
+  },
+  {
+    img_id: 5,
+    anime: "One Piece",
+    description: "WhiteBeard Wall Poster",
+    price: 500,
+
+
+  },
+  {
+    img_id: 6,
+    anime: "One Piece",
+    description: "Luffy 5th Gear  Wall Poster",
+    price: 249,
+  },
+];
 
 const SingleProduct = () => {
+
+  const AddToCartHandler = (e) => {
+    e.preventDefault();
+
+  }
   const [quant, setQuant] = useState(1);
   const quantIncHandler = () => {
     setQuant((prevState) => prevState + 1);
   }
   const quantDeccHandler = (e) => {
-
     if (quant > 1)
       setQuant((prevState) => prevState - 1);
   }
-  let props = {
-    img_id: 1,
-    anime: 'Naruto',
-    description: 'Almighty Push Wall Poster',
-    price: 300
-  }
+  let id = +useParams().product_id;
+  let props = imgArr.find((item) => item.img_id === id)
   let imgSrc = imgMap[props.img_id];
-  const img_id = useParams();
-
+  
   return (
     <div>
-      <Navigation />
+
+
+
+<Navigation/>
+
       <div className='mt-[55px]  w-full  flex flex-col items-center lg:flex-row lg:justify-evenly p-6  '>
         <div className="min-h-[100px] min-w-[0px]  ">
           <img
@@ -82,7 +134,7 @@ const SingleProduct = () => {
             </div>
           </div>
 
-          <button className='border-2 rounded-md border-green-800 p-2 text-green-900'>ADD TO CART</button>
+          <button className='border-2 rounded-md border-green-800 p-2 text-green-900' onClick = {AddToCartHandler}>ADD TO CART</button>
           <button className='mt-2 p-2 text-white rounded-md bg-green-800'>BUY IT NOW</button>
 
           <div className='p-2 font-bold text-gray-500 py-5 leading-loose'>

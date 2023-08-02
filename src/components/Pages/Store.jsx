@@ -1,11 +1,10 @@
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import React from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../NavBar/Navbar";
-import { useState } from "react";
 import ModalPopup from "../NPM Packages/ReactModal";
 import { CartContextProvider } from "../Context/CartContext";
+import React, { useState } from "react";
 
 const Store = () => {
 	const [isCart, setIsCart] = useState(false);
@@ -21,5 +20,6 @@ const Store = () => {
 		</CartContextProvider>
 	);
 };
+
 
 export default Store;
