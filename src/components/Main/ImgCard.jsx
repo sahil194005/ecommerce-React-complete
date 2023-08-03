@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const ImgCard = (props) => {
 
 	const { Dispatch } = useContext(CartContext);
@@ -36,11 +36,11 @@ const ImgCard = (props) => {
 				<p className="text-gray-500">
 					On sale from {props.price}
 				</p>
-				 <Link to={`/${props.id}`}
+				 <NavLink to={`/${props.id}`}
 					onClick={ADD2CartHandler}
 					className="border bg-red-700 text-white p-1 rounded-md hover:bg-red-900 ">
 					View Product
-				</Link> 
+				</NavLink> 
 			</div>
 		</div>
 	);

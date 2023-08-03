@@ -5,7 +5,6 @@ import Navbar from "../NavBar/Navbar";
 import ModalPopup from "../NPM Packages/ReactModal";
 import { CartContextProvider } from "../Context/CartContext";
 import React, { useState } from "react";
-
 const Store = () => {
 	const [isCart, setIsCart] = useState(false);
 	return (

@@ -6,7 +6,7 @@ const About = () => {
 	return (
 		<div className="">
 			<Navigation val="about" />
-			<div className="hidden  sm:block  h-screen w-screen  p-6">
+			<div className="hidden h-[1200px] sm:block  w-screen  p-6">
 				<div className="  h-2/5 grid grid-cols-2">
 					<div className="  bg-[rgb(248,192,187)]"></div>
 					<div className=" bg-red-500 h-full w-full flex  items-end justify-center">
@@ -53,7 +53,7 @@ const About = () => {
 					<h1 className="text-white font-bold font-serif text-4xl mt-2">
 						About Us
 					</h1>
-					<p className="text-white text-3xl px-9 text-center p-4 font-thin  ">
+					<p className="text-white text-3xl px-9 text-center p-4 font-thin   ">
 						Welcome to our Store , where anime dreams come to
 						life! Immerse yourself in a captivating world of
 						anime wonder with our exquisite collection of

@@ -1,78 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import Navigation from '../Navigation/Navigation';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import img1 from "../../Assets/img1.png";
-import img2 from "../../Assets/img2.png";
-import img3 from "../../Assets/img3.png";
-import img4 from "../../Assets/img4.png";
-import img5 from "../../Assets/img5.png";
-import img6 from "../../Assets/img6.png";
 import { Link } from 'react-router-dom';
-const imgMap = {
-  1: img1,
-  2: img2,
-  3: img3,
-  4: img4,
-  5: img5,
-  6: img6,
-};
-
-const imgArr = [
-  {
-    img_id: 1,
-    anime: "Naruto",
-    description: "Almighty Push Wall Poster",
-    price: 350,
-
-  },
-  {
-    img_id: 2,
-    description: "Roronoa Zoro Wall Poster",
-    anime: "One Piece",
-    price: 400,
+import Loading from '../UI/Loading';
+import axios from 'axios';
+import Navigation from '../Navigation/Navigation';
 
 
-  },
-  {
-    img_id: 3,
-    anime: "Chainsaw Man",
-    description: "Chainsaw Skull Wall Poster",
-    price: 200,
 
+const SingleProduct = (props) => {
+  const id = useParams().product_id
+  const [Product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const GetFromDB = async () => {
+      try {
 
-  },
-  {
-    img_id: 4,
-    anime: "Baki",
-    description: "Yujiro Hanma Wall Poster",
-    price: 150,
-
-
-  },
-  {
-    img_id: 5,
-    anime: "One Piece",
-    description: "WhiteBeard Wall Poster",
-    price: 500,
-
-
-  },
-  {
-    img_id: 6,
-    anime: "One Piece",
-    description: "Luffy 5th Gear  Wall Poster",
-    price: 249,
-  },
-];
-
-const SingleProduct = () => {
-
+        const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/store/getSingleProduct/${id}`);
+        setProduct(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    GetFromDB()
+  }, [id])
   const AddToCartHandler = (e) => {
     e.preventDefault();
-
   }
   const [quant, setQuant] = useState(1);
   const quantIncHandler = () => {
@@ -82,41 +38,30 @@ const SingleProduct = () => {
     if (quant > 1)
       setQuant((prevState) => prevState - 1);
   }
-  let id = +useParams().product_id;
-  let props = imgArr.find((item) => item.img_id === id)
-  let imgSrc = imgMap[props.img_id];
-  
+
+  if (isLoading) return <Loading/>
+
   return (
     <div>
-
-
-
-<Navigation/>
+      <Navigation />
 
       <div className='mt-[55px]  w-full  flex flex-col items-center lg:flex-row lg:justify-evenly p-6  '>
         <div className="min-h-[100px] min-w-[0px]  ">
           <img
-            src={imgSrc}
+            src={Product.img_id}
             alt=""
             className="w-full h-full object-cover  "
           />
         </div>
         <div className='flex flex-col p-6 max-w-[700px] '>
-
           <span className='text-gray-600 p-2'>Epic Stuff</span>
-
-          <p className='text-3xl tracking-wider p-2 '>ANIME-{props.anime}-{props.description} </p>
-
+          <p className='text-3xl tracking-wider p-2 '>ANIME-{Product.anime}-{Product.description} </p>
           <div className='flex p-2 '>
             <span className='bg-red-700 text-white px-2'>SALE</span>
-            <span className='px-2 text-gray-600'>Rs. {props.price}</span>
-            <span className="line-through text-gray-600 px-2 ">
-              {props.price + 273}
-            </span>
+            <span className='px-2 text-gray-600'>Rs. {Product.price}</span>
+            <span className="line-through text-gray-600 px-2 ">274</span>
           </div>
-
           <p className=' p-2 text-gray-600'>Tax included. <span className='text-red-700'>Shipping</span> calculated at checkout</p>
-
           <div className='flex flex-row justify-center p-1'>
             <div className='p-2 flex-1' >
               <p className='p-1 text-gray-700'>SIZE</p>
@@ -134,7 +79,7 @@ const SingleProduct = () => {
             </div>
           </div>
 
-          <button className='border-2 rounded-md border-green-800 p-2 text-green-900' onClick = {AddToCartHandler}>ADD TO CART</button>
+          <button className='border-2 rounded-md border-green-800 p-2 text-green-900' onClick={AddToCartHandler}>ADD TO CART</button>
           <button className='mt-2 p-2 text-white rounded-md bg-green-800'>BUY IT NOW</button>
 
           <div className='p-2 font-bold text-gray-500 py-5 leading-loose'>
@@ -158,7 +103,9 @@ const SingleProduct = () => {
       </div>
       <Footer />
     </div>
+
   )
+
 }
 
 export default SingleProduct;

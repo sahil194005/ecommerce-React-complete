@@ -14,9 +14,9 @@ const ContactUs =  () => {
 			phoneNo: numberRef.current.value
 		}
 		nameRef.current.value = emailRef.current.value = numberRef.current.value = "";
-		console.log(obj);
+		
 		const response =await axios.post('https://ecommerce-anime-posters-default-rtdb.firebaseio.com/contact.json', obj);
-		console.log(response);
+		
 	}
 	return (
 		<div>
