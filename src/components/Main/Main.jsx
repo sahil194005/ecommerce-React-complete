@@ -22,7 +22,8 @@ const Main = () => {
 	}, [])
 
 	if (imgArr.length === 0)
-	return <Loading/>
+		return <Loading />
+
 	return (
 		<div className="   grid  gap-7 justify-items-center    pt-10   md:grid-cols-3 px-2 max-w-[1300px] mx-auto">
 			{imgArr.map((item) => {

@@ -1,19 +1,20 @@
-import React, { useReducer } from "react";
-
+import React, { useReducer, useEffect } from "react";
+import axios from "axios";
 export const CartContext = React.createContext();
 
-const intitState = {
-	TotalCartItems: 0,
-	cartItems: [],
-	TotalCartAmount: 0,
-};
+
 
 const Reducer = (state, action) => {
 	switch (action.type) {
+
+		case "TOGGLE_CART": {
+			return { ...state, isCart: !state.isCart };
+		}
+
 		case "INC_CART_COUNT": {
 			return {
 				...state,
-				TotalCartItems: state.TotalCartItems + 1,
+				TotalCartItems: state.TotalCartItems + action.quant,
 			};
 		}
 		case "ADD_2_CART": {
@@ -64,6 +65,24 @@ const Reducer = (state, action) => {
 };
 
 export const CartContextProvider = (props) => {
+	const cartItems = [];
+	const intitState = {
+		TotalCartItems: 0,
+		cartItems: cartItems,
+		TotalCartAmount: 0,
+		isCart: false,
+	};
+	useEffect(() => {
+		async function AddToDB() {
+			try {
+				const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/cart/getAllCartItems`);
+				
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		AddToDB()
+	}, cartItems)
 	const [state, Dispatch] = useReducer(Reducer, intitState);
 	return (
 		<CartContext.Provider value={{ state, Dispatch }}>

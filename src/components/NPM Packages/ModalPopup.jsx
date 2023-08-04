@@ -2,12 +2,14 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import Cart from "../Cart/Cart";
 import "./ReactModal.css";
-
-const ModalPopup = ({ isCart, setIsCart }) => {
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
+const ModalPopup = () => {
+	const {state,Dispatch} = useContext(CartContext)
 	return (
 		<Modal
-			open={isCart}
-			onClose={() => setIsCart(false)}
+			open={state.isCart}
+			onClose={() => Dispatch({type:"TOGGLE_CART"})}
 			classNames={{
 				overlayAnimationIn: "customEnterOverlayAnimation",
 				overlayAnimationOut: "customLeaveOverlayAnimation",
@@ -16,9 +18,7 @@ const ModalPopup = ({ isCart, setIsCart }) => {
 			}}
 			animationDuration={800}
 			center>
-			
-				<Cart isCart={isCart} setIsCart={setIsCart} />
-			
+				<Cart  />
 		</Modal>
 	);
 };

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
 import Loading from '../UI/Loading';
 import axios from 'axios';
 import Navigation from '../Navigation/Navigation';
@@ -11,6 +11,24 @@ import Navigation from '../Navigation/Navigation';
 
 
 const SingleProduct = (props) => {
+
+  const { Dispatch } = useContext(CartContext);
+  const ADD2CartHandler = (e) => {
+    e.preventDefault();
+    let obj = {
+      img_id: Product.img_id,
+      anime: Product.anime,
+      price: Product.price,
+      quantity: quant,
+      ProductId: Product._id
+    }
+    console.log(obj);
+    Dispatch({ type: "INC_CART_COUNT",quant:quant });
+    Dispatch({
+      type: "ADD_2_CART",
+      obj: obj,
+    });
+  };
   const id = useParams().product_id
   const [Product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -27,9 +45,7 @@ const SingleProduct = (props) => {
     }
     GetFromDB()
   }, [id])
-  const AddToCartHandler = (e) => {
-    e.preventDefault();
-  }
+
   const [quant, setQuant] = useState(1);
   const quantIncHandler = () => {
     setQuant((prevState) => prevState + 1);
@@ -39,7 +55,7 @@ const SingleProduct = (props) => {
       setQuant((prevState) => prevState - 1);
   }
 
-  if (isLoading) return <Loading/>
+  if (isLoading) return <Loading />
 
   return (
     <div>
@@ -79,7 +95,7 @@ const SingleProduct = (props) => {
             </div>
           </div>
 
-          <button className='border-2 rounded-md border-green-800 p-2 text-green-900' onClick={AddToCartHandler}>ADD TO CART</button>
+          <button className='border-2 rounded-md border-green-800 p-2 text-green-900' onClick={ADD2CartHandler}>ADD TO CART</button>
           <button className='mt-2 p-2 text-white rounded-md bg-green-800'>BUY IT NOW</button>
 
           <div className='p-2 font-bold text-gray-500 py-5 leading-loose'>
