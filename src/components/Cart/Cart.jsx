@@ -4,16 +4,21 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import Lottie from "lottie-react";
 import emptyCart from "../../Assets/Animations/emptyCart.json";
-const Cart = (props) => {
-	const { state } = useContext(CartContext);
+
+
+
+
+const Cart = () => {
+	const { state,Dispatch } = useContext(CartContext);
 	let Items = state.cartItems.map((item) => {
 		return (
 			<SingleCartItem
-				key={item.img_id}
+				key={item.ProductId}
 				img_id={item.img_id}
 				anime={item.anime}
 				price={item.price}
 				quantity={item.quantity}
+				ProductId={item.ProductId}
 			/>
 		);
 	});
@@ -30,7 +35,7 @@ const Cart = (props) => {
 						<p>view price details</p>
 					</div>
 					<div
-						onClick={() => props.setIsCart(false)}
+						onClick={() => Dispatch({type:"TOGGLE_CART"})}
 						className="bg-yellow-400 rounded-md px-1 justify-center items-center flex hover:bg-yellow-600 ">
 						<button>Close Cart</button>
 					</div>

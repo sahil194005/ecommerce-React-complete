@@ -15,12 +15,13 @@ const ContactUs =  () => {
 		}
 		nameRef.current.value = emailRef.current.value = numberRef.current.value = "";
 		
-		const response =await axios.post('https://ecommerce-anime-posters-default-rtdb.firebaseio.com/contact.json', obj);
+		const response = await axios.post('https://ecommerce-anime-posters-default-rtdb.firebaseio.com/contact.json', obj);
+		console.log(response);
 		
 	}
 	return (
 		<div>
-			<Navigation val="contact"/>
+			<Navigation/>
 			<div className="mt-[68px] flex flex-col items-center " >
 				<div className=" text-6xl my-4">CONTACT US</div>
 				<div className="flex  border border-black box-border p-6">

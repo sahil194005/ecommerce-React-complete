@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import About from "./components/Pages/About";
 import ContactUs from "./components/Pages/ContactUs";
@@ -13,23 +13,21 @@ function App() {
 	return (
 		<div>
 			<CartContextProvider>
-				
-					<Routes>
-						<Route path="/" element={<Store />} ></Route>
+				<Routes>
+					<Route path="/" element={<Store />}></Route>
 
-						<Route
-							path="/About"
-							element={<About />}></Route>
+					<Route path="/About" element={<About />}></Route>
 
-						<Route
-							path="/ContactUs"
-							element={<ContactUs />}></Route>
+					<Route
+						path="/ContactUs"
+						element={<ContactUs />}></Route>
 
-						<Route
-							path="/:product_id"
-							element={<SingleProduct />}></Route>
-					</Routes>
+					<Route
+						path="/:product_id"
+						element={<SingleProduct />}></Route>
 
+					<Route path="*" element={<ErrorPage />}></Route>
+				</Routes>
 			</CartContextProvider>
 		</div>
 	);

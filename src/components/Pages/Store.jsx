@@ -9,15 +9,17 @@ import Navigation from "../Navigation/Navigation";
 const Store = () => {
 	const [isCart, setIsCart] = useState(false);
 	return (
-		<CartContextProvider className="App">
+		<React.Fragment>
+
+			<Navigation />
 			{isCart && (
 				<ModalPopup isCart={isCart} setIsCart={setIsCart} />
 			)}
-			<Navigation/>
 			<Navbar />
 			<Main />
 			<Footer />
-		</CartContextProvider> 
+		</React.Fragment>
+
 	);
 };
 

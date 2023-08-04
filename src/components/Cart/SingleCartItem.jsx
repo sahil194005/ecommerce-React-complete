@@ -1,23 +1,11 @@
 import React from "react";
-import img1 from "../../Assets/img1.png";
-import img2 from "../../Assets/img2.png";
-import img3 from "../../Assets/img3.png";
-import img4 from "../../Assets/img4.png";
-import img5 from "../../Assets/img5.png";
-import img6 from "../../Assets/img6.png";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { BsFillLightningChargeFill } from "react-icons/bs";
-const imgMap = {
-	1: img1,
-	2: img2,
-	3: img3,
-	4: img4,
-	5: img5,
-	6: img6,
-};
+
+
 
 const SingleCartItem = ({
 	img_id,
@@ -25,18 +13,21 @@ const SingleCartItem = ({
 	price,
 	quantity,
 	description,
+	ProductId
 }) => {
 	const { Dispatch } = useContext(CartContext);
+
 	const CartItemRemoveHandler = () => {
-		Dispatch({ type: "REMOVE_FROM_CART", img_id: +img_id });
+		
+		Dispatch({ type: "REMOVE_FROM_CART", ProductId: ProductId });
 	};
-	let imgSrc = imgMap[img_id];
+
 	return (
 		<div className="bg-white   grid  grid-rows-1 border-b-2 border-gray-400 py-2">
 			<div className="p-1 flex justify-around">
 				<div className="h-[100px] w-[70px] sm:h-[150px] sm:w-[110px]">
 					<img
-						src={imgSrc}
+						src={img_id}
 						alt=""
 						className="w-full h-full object-cover  "
 					/>
@@ -60,7 +51,7 @@ const SingleCartItem = ({
 						</div>
 					)}
 					<p className="text-xs text-green-800 sm:text-lg">
-						4 offers applied. {img_id + 7} offers available
+						4 offers applied. 7 offers available
 					</p>
 				</div>
 			</div>

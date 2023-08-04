@@ -11,7 +11,8 @@ const Main = () => {
 	useEffect(() => {
 		const getfromDB = async () => {
 			try {
-				let response = await axios.get('https://ecommerce-backend-xe7w.onrender.com/store/getProduct')
+				let response = await axios.get('https://ecommerce-backend-xe7w.onrender.com/store/getProduct');
+				console.log('get all products in store being called');
 				setImgArr(response.data);
 			} catch (error) {
 				console.log(error);

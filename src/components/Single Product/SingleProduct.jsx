@@ -9,10 +9,22 @@ import axios from 'axios';
 import Navigation from '../Navigation/Navigation';
 
 
-
 const SingleProduct = (props) => {
 
+  const AddCart2DB = async (obj) => {
+    try {
+      let response = await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj);
+     console.log('add product to cart being called')
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   const { Dispatch } = useContext(CartContext);
+
+
   const ADD2CartHandler = (e) => {
     e.preventDefault();
     let obj = {
@@ -22,16 +34,26 @@ const SingleProduct = (props) => {
       quantity: quant,
       ProductId: Product._id
     }
-    console.log(obj);
-    Dispatch({ type: "INC_CART_COUNT",quant:quant });
+    
+    AddCart2DB(obj);
+    Dispatch({ type: "INC_CART_COUNT", quant: quant });
     Dispatch({
       type: "ADD_2_CART",
       obj: obj,
     });
+
   };
+
+
+
+
+
+
+
   const id = useParams().product_id
   const [Product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const GetFromDB = async () => {
       try {
