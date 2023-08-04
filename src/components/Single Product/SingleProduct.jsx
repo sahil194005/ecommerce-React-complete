@@ -10,10 +10,10 @@ import Navigation from '../Navigation/Navigation';
 
 
 const SingleProduct = (props) => {
-
+ 
   const AddCart2DB = async (obj) => {
     try {
-      let response = await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj);
+      await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj);
      console.log('add product to cart being called')
 
     } catch (error) {
@@ -59,6 +59,7 @@ const SingleProduct = (props) => {
       try {
 
         const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/store/getSingleProduct/${id}`);
+        console.log('get single product being called')
         setProduct(response.data);
         setIsLoading(false);
       } catch (error) {

@@ -85,6 +85,13 @@ const Reducer = (state, action) => {
 				),
 			};
 		}
+		case "SET_INITIAL_STORE_ITEMS": {
+			return {
+				...state,
+				StoreItems: action.StoreItems,
+
+			};
+		}
 		default:
 			return state;
 	}
@@ -94,19 +101,22 @@ const Reducer = (state, action) => {
 
 export const CartContextProvider = (props) => {
 	let cartItems = [];
+	let StoreItems = [];
 	const intitState = {
 		TotalCartItems: 0,
 		cartItems: cartItems,
 		TotalCartAmount: 0,
 		isCart: false,
+		StoreItems: StoreItems
 	};
 
 	useEffect(() => {
 		async function GetCartItems() {
 			try {
 				const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/cart/getAllCartItems`);
+				console.log('get all cart items being called')
+
 				const fetchedCartItems = response.data;
-				intitState.cartItems = fetchedCartItems;
 				Dispatch({ type: "SET_INITIAL_CART_ITEMS", cartItems: fetchedCartItems });
 			} catch (error) {
 				console.log(error);
@@ -115,8 +125,21 @@ export const CartContextProvider = (props) => {
 		GetCartItems()
 	}, [])
 
+	useEffect(() => {
+		const getfromDB = async () => {
+			try {
+				let fetchedStoreItems = await axios.get('https://ecommerce-backend-xe7w.onrender.com/store/getProduct');
+				console.log('get all products in store being called');
+				Dispatch({ type: "SET_INITIAL_STORE_ITEMS", StoreItems: fetchedStoreItems.data });
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getfromDB();
+	}, [])
+
 	const [state, Dispatch] = useReducer(Reducer, intitState);
-	
+
 	return (
 		<CartContext.Provider value={{ state, Dispatch }}>
 			{props.children}

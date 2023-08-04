@@ -4,7 +4,7 @@ import { BsTrash } from "react-icons/bs";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { BsFillLightningChargeFill } from "react-icons/bs";
-
+import axios from "axios";
 
 
 const SingleCartItem = ({
@@ -17,9 +17,21 @@ const SingleCartItem = ({
 }) => {
 	const { Dispatch } = useContext(CartContext);
 
+	const RemoveFromDB = async(ProductId) => {
+		try {
+			console.log(ProductId);
+		 await axios.delete(`https://ecommerce-backend-xe7w.onrender.com/cart/RemoveFromCart/${ProductId}`);
+			console.log('remove a cart item being called');
+			
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	const CartItemRemoveHandler = () => {
 		
 		Dispatch({ type: "REMOVE_FROM_CART", ProductId: ProductId });
+		RemoveFromDB(ProductId);
 	};
 
 	return (
