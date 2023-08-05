@@ -2,10 +2,6 @@ import React, { useReducer, useEffect } from "react";
 import axios from "axios";
 export const CartContext = React.createContext();
 
-
-
-
-
 const Reducer = (state, action) => {
 	switch (action.type) {
 
@@ -19,13 +15,7 @@ const Reducer = (state, action) => {
 				TotalCartItems: state.TotalCartItems + action.quant,
 			};
 		}
-		// let obj = {
-		// 	img_id: Product.img_id,
-		// 	anime: Product.anime,
-		// 	price: Product.price,
-		// 	quantity: quant,
-		// 	ProductId: Product._id
-		//   }
+		
 		case "ADD_2_CART": {
 			const InCart = state.cartItems.find(
 				(item) => item.img_id === action.obj.img_id
@@ -71,7 +61,7 @@ const Reducer = (state, action) => {
 
 		}
 		case "SET_INITIAL_CART_ITEMS": {
-			console.log('get all cart items being called')
+			
 			return {
 				...state,
 				cartItems: action.cartItems,
@@ -92,10 +82,16 @@ const Reducer = (state, action) => {
 
 			};
 		}
+		case "TOGGLE_LOGIN": {
+			return {
+				...state,
+				isLogin:!state.isLogin
+			}
+			}
 		default:
 			return state;
 	}
-};
+}
 
 
 
@@ -107,7 +103,8 @@ export const CartContextProvider = (props) => {
 		cartItems: cartItems,
 		TotalCartAmount: 0,
 		isCart: false,
-		StoreItems: StoreItems
+		StoreItems: StoreItems,
+		isLogin:false
 	};
 
 	useEffect(() => {
