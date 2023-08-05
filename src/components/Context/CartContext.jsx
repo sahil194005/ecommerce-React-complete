@@ -87,6 +87,13 @@ const Reducer = (state, action) => {
 				...state,
 				isLogin:!state.isLogin
 			}
+		}
+			
+		case "SET_TOKEN": {
+			return {
+				...state,
+				token:action.token
+			}
 			}
 		default:
 			return state;
@@ -104,7 +111,8 @@ export const CartContextProvider = (props) => {
 		TotalCartAmount: 0,
 		isCart: false,
 		StoreItems: StoreItems,
-		isLogin:false
+		isLogin: false,
+		token:''
 	};
 
 	useEffect(() => {

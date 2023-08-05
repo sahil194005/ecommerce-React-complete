@@ -10,10 +10,14 @@ import Navigation from '../Navigation/Navigation';
 
 
 const SingleProduct = (props) => {
- 
+  const { Dispatch } = useContext(CartContext);
+  
+  
   const AddCart2DB = async (obj) => {
     try {
-      await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj);
+      let token = localStorage.getItem('token');
+      
+      await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj, { headers: { Authorization: token } });
      console.log('add product to cart being called')
 
     } catch (error) {
@@ -22,7 +26,6 @@ const SingleProduct = (props) => {
   }
 
 
-  const { Dispatch } = useContext(CartContext);
 
 
   const ADD2CartHandler = (e) => {

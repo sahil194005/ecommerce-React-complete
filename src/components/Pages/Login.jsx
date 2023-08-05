@@ -5,7 +5,6 @@ import axios from "axios";
 
 
 const Login = () => {
-
     const [login, setLogin] = useState(false)
     const [sendingReq, setSendingReq] = useState(false);
     const [openalert, setOpenAlert] = useState(false);
@@ -21,10 +20,11 @@ const Login = () => {
                 console.log('login being called')
                 setSendingReq(true);
                 const response = await axios.post(`https://ecommerce-backend-xe7w.onrender.com/users/login`, obj);
-                localStorage.setItem('token', response.data.token);
                 setSendingReq(false);
                 setAlertSeverity('success');
                 setAlertMsg(response.data.msg);
+               
+                localStorage.setItem('token',JSON.stringify( response.data.token));
                 window.location.href = '/Store'
 
             }
