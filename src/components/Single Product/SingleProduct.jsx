@@ -11,22 +11,17 @@ import Navigation from '../Navigation/Navigation';
 
 const SingleProduct = (props) => {
   const { Dispatch } = useContext(CartContext);
-  
-  
+
+
   const AddCart2DB = async (obj) => {
     try {
-      let token = localStorage.getItem('token');
-      
-      await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj, { headers: { Authorization: token } });
-     console.log('add product to cart being called')
-
+      let token = JSON.parse(localStorage.getItem('token'));
+      await axios.post('http://localhost:3005/cart/addToCart', obj, { headers: { "Authorization": token } });
+      console.log('add product to cart being called')
     } catch (error) {
       console.log(error);
     }
   }
-
-
-
 
   const ADD2CartHandler = (e) => {
     e.preventDefault();
@@ -37,7 +32,7 @@ const SingleProduct = (props) => {
       quantity: quant,
       ProductId: Product._id
     }
-    
+
     AddCart2DB(obj);
     Dispatch({ type: "INC_CART_COUNT", quant: quant });
     Dispatch({
@@ -61,7 +56,7 @@ const SingleProduct = (props) => {
     const GetFromDB = async () => {
       try {
 
-        const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/store/getSingleProduct/${id}`);
+        const response = await axios.get(`http://localhost:3005/store/getSingleProduct/${id}`);
         console.log('get single product being called')
         setProduct(response.data);
         setIsLoading(false);

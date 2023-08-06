@@ -19,19 +19,21 @@ const Login = () => {
             if (login) {
                 console.log('login being called')
                 setSendingReq(true);
-                const response = await axios.post(`https://ecommerce-backend-xe7w.onrender.com/users/login`, obj);
+                const response = await axios.post(`http://localhost:3005/users/login`, obj);
                 setSendingReq(false);
                 setAlertSeverity('success');
+                console.log(response)
                 setAlertMsg(response.data.msg);
-               
-                localStorage.setItem('token',JSON.stringify( response.data.token));
+                
+                localStorage.setItem('token', JSON.stringify(response.data.token));
+                
                 window.location.href = '/Store'
 
             }
             else {
                 console.log('signup being called');
                 setSendingReq(true);
-                const response = await axios.post(`https://ecommerce-backend-xe7w.onrender.com/users/signup`, obj);
+                const response = await axios.post(`http://localhost:3005/users/signup`, obj);
                 setAlertSeverity('success');
                 setAlertMsg(response.data.msg);
                 setSendingReq(false);
@@ -41,6 +43,7 @@ const Login = () => {
             console.log(error);
             setAlertSeverity('error');
             setSendingReq(false);
+            console.log(error)
             setAlertMsg(error.response.data.msg);
         }
         setOpenAlert(true);
@@ -60,6 +63,7 @@ const Login = () => {
         if (login) LoginObj = {
             email: emailRef.current.value,
             password: passwordRef.current.value
+            
         }
         passwordRef.current.value = emailRef.current.value = "";
         if (!login) nameRef.current.value = "";
@@ -79,15 +83,15 @@ const Login = () => {
                         <p className="font-Indie text-4xl font-bold tracking-[4px]">{login ? 'Login' : 'SignUp'}</p>
                         {!login && <div className="flex flex-col  py-3 ">
                             <label >Name</label>
-                            <input ref={nameRef} className="text-center border-b-4 p-2 border-gray-400" type="text" required></input>
+                            <input ref={nameRef} className="text-center border-b-4 p-2 border-gray-400" type="text" ></input>
                         </div>}
                         <div className="flex flex-col py-3">
                             <label>Email :</label>
-                            <input ref={emailRef} className="text-center border-b-4 p-2 border-gray-400" type="email" required></input>
+                            <input ref={emailRef} className="text-center border-b-4 p-2 border-gray-400" type="email" ></input>
                         </div>
                         <div className="flex flex-col py-3">
                             <label >Password</label>
-                            <input ref={passwordRef} className=" text-center border-b-4 p-2 border-gray-400" type="string" required></input>
+                            <input ref={passwordRef} className=" text-center border-b-4 p-2 border-gray-400" type="string" ></input>
                         </div>
 
 

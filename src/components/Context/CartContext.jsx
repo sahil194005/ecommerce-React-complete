@@ -15,7 +15,7 @@ const Reducer = (state, action) => {
 				TotalCartItems: state.TotalCartItems + action.quant,
 			};
 		}
-		
+
 		case "ADD_2_CART": {
 			const InCart = state.cartItems.find(
 				(item) => item.img_id === action.obj.img_id
@@ -61,7 +61,7 @@ const Reducer = (state, action) => {
 
 		}
 		case "SET_INITIAL_CART_ITEMS": {
-			
+
 			return {
 				...state,
 				cartItems: action.cartItems,
@@ -85,22 +85,15 @@ const Reducer = (state, action) => {
 		case "TOGGLE_LOGIN": {
 			return {
 				...state,
-				isLogin:!state.isLogin
+				isLogin: !state.isLogin
 			}
 		}
 			
-		case "SET_TOKEN": {
-			return {
-				...state,
-				token:action.token
-			}
-			}
+		
 		default:
 			return state;
 	}
 }
-
-
 
 export const CartContextProvider = (props) => {
 	let cartItems = [];
@@ -111,17 +104,16 @@ export const CartContextProvider = (props) => {
 		TotalCartAmount: 0,
 		isCart: false,
 		StoreItems: StoreItems,
-		isLogin: false,
-		token:''
+		isLogin: false
 	};
 
 	useEffect(() => {
 		async function GetCartItems() {
 			try {
-				const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/cart/getAllCartItems`);
+				const token = JSON.parse(localStorage.getItem('token'));
+				const response = await axios.get(`http://localhost:3005/cart/getAllCartItems`, { headers: { "Authorization": token } });
 				console.log('get all cart items being called')
-
-				const fetchedCartItems = response.data;
+				const fetchedCartItems = response.data.data;
 				Dispatch({ type: "SET_INITIAL_CART_ITEMS", cartItems: fetchedCartItems });
 			} catch (error) {
 				console.log(error);

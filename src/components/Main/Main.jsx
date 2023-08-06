@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import ImgCard from "./ImgCard";
 import Loading from "../UI/Loading";
-import { useContext } from "react";
+import { useContext, useEffect,useCallback } from "react";
 import { CartContext } from "../Context/CartContext";
-
+import axios from "axios";
 
 const Main = () => {
-	const { state } = useContext(CartContext);
 
-	if (state.StoreItems.length === 0)
-		return <Loading />
+	const [storeItems, setStoreItems] = useState([]);
+
+
+	useEffect(() => {
+		const getfromDB = async () => {
+			try {
+				let fetchedStoreItems = await axios.get('http://localhost:3005/store/getProduct');
+				console.log('get all products in store being called');
+				setStoreItems(fetchedStoreItems.data);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getfromDB();
+	}, [])
+
+
+	if (storeItems === 0) { return <Loading /> }
+
+
 
 	return (
 		<div className="   grid  gap-7 justify-items-center    pt-10   md:grid-cols-3 px-2 max-w-[1300px] mx-auto">
-			{state.StoreItems.map((item) => {
+			{storeItems.map((item) => {
 				return (
 					<ImgCard
 						key={item._id}

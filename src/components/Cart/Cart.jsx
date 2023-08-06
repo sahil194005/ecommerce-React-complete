@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SingleCartItem from "./SingleCartItem";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../Context/CartContext";
 import Lottie from "lottie-react";
 import emptyCart from "../../Assets/Animations/emptyCart.json";
 
 
-
-
 const Cart = () => {
-	const { state,Dispatch } = useContext(CartContext);
+	const { state, Dispatch } = useContext(CartContext);
+	
 	let Items = state.cartItems.map((item) => {
 		return (
 			<SingleCartItem
@@ -35,7 +34,7 @@ const Cart = () => {
 						<p>view price details</p>
 					</div>
 					<div
-						onClick={() => Dispatch({type:"TOGGLE_CART"})}
+						onClick={() => Dispatch({ type: "TOGGLE_CART" })}
 						className="bg-yellow-400 rounded-md px-1 justify-center items-center flex hover:bg-yellow-600 ">
 						<button>Close Cart</button>
 					</div>

@@ -1,17 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
 import '../../index.css'
 import { CiShoppingCart } from "react-icons/ci";
 import { CartContext } from '../Context/CartContext';
 import ModalPopup from '../NPM Packages/ModalPopup';
 const Navigation = () => {
+    const { state, Dispatch } = useContext(CartContext);
 
     const CartClickHandler = (e) => {
         e.preventDefault();
         Dispatch({ type: "TOGGLE_CART" });
 
     };
-    const { state, Dispatch } = useContext(CartContext);
+
     return (<div className="z-20 bg-black text-white flex  py-4 fixed top-0 w-full sm:justify-center  ">
         <div className=" md:px-6  mx-6 md:text-3xl">
             <NavLink to="/ContactUs">CONTACT US</NavLink>
