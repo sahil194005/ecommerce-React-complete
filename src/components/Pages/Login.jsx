@@ -19,7 +19,7 @@ const Login = () => {
             if (login) {
                 console.log('login being called')
                 setSendingReq(true);
-                const response = await axios.post(`http://localhost:3005/users/login`, obj);
+                const response = await axios.post(`https://ecommerce-backend-xe7w.onrender.com/users/login`, obj);
                 setSendingReq(false);
                 setAlertSeverity('success');
                 console.log(response)
@@ -33,7 +33,7 @@ const Login = () => {
             else {
                 console.log('signup being called');
                 setSendingReq(true);
-                const response = await axios.post(`http://localhost:3005/users/signup`, obj);
+                const response = await axios.post(`https://ecommerce-backend-xe7w.onrender.com/users/signup`, obj);
                 setAlertSeverity('success');
                 setAlertMsg(response.data.msg);
                 setSendingReq(false);

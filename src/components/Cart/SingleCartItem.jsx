@@ -19,7 +19,7 @@ const SingleCartItem = ({
 
 	const RemoveFromDB = async (ProductId) => {
 		try {
-			await axios.delete(`http://localhost:3005/cart/RemoveFromCart/${ProductId}`);
+			await axios.delete(`https://ecommerce-backend-xe7w.onrender.com/cart/RemoveFromCart/${ProductId}`);
 			console.log('remove a cart item being called');
 		} catch (error) {
 			console.log(error);

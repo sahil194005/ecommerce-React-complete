@@ -111,7 +111,7 @@ export const CartContextProvider = (props) => {
 		async function GetCartItems() {
 			try {
 				const token = JSON.parse(localStorage.getItem('token'));
-				const response = await axios.get(`http://localhost:3005/cart/getAllCartItems`, { headers: { "Authorization": token } });
+				const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/cart/getAllCartItems`, { headers: { "Authorization": token } });
 				console.log('get all cart items being called')
 				const fetchedCartItems = response.data.data;
 				Dispatch({ type: "SET_INITIAL_CART_ITEMS", cartItems: fetchedCartItems });

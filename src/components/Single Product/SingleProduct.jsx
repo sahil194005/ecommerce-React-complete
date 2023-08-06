@@ -16,7 +16,7 @@ const SingleProduct = (props) => {
   const AddCart2DB = async (obj) => {
     try {
       let token = JSON.parse(localStorage.getItem('token'));
-      await axios.post('http://localhost:3005/cart/addToCart', obj, { headers: { "Authorization": token } });
+      await axios.post('https://ecommerce-backend-xe7w.onrender.com/cart/addToCart', obj, { headers: { "Authorization": token } });
       console.log('add product to cart being called')
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ const SingleProduct = (props) => {
     const GetFromDB = async () => {
       try {
 
-        const response = await axios.get(`http://localhost:3005/store/getSingleProduct/${id}`);
+        const response = await axios.get(`https://ecommerce-backend-xe7w.onrender.com/store/getSingleProduct/${id}`);
         console.log('get single product being called')
         setProduct(response.data);
         setIsLoading(false);
